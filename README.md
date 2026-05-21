@@ -13,6 +13,30 @@
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home — Chat Interface
+![Home](docs/screenshots/home.png)
+> Clean dark-mode SaaS UI with quick symptom chips, session history sidebar, and feature cards showing AI Diagnosis, RAG Knowledge, Emergency Detection, and Voice Input.
+
+### 🔐 Authentication
+![Login](docs/screenshots/login.png)
+> JWT-secured Sign In / Create Account flow with Guest access support.
+
+### 🤖 AI Symptom Analysis
+![Chat](docs/screenshots/chat.png)
+> Real-time symptom analysis with possible causes, severity assessment (LOW/MEDIUM/HIGH/EMERGENCY), treatment recommendations, and ML predictions shown as confidence-scored tags (e.g. Malaria 67.5%, Migraine 46%, Flu 42.2%).
+
+### 📊 Analytics Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
+> Session-level stats — Total Chats, Diagnoses Run, Sessions, and Diseases in Knowledge Base — with Top Diagnosed Conditions and Severity Distribution charts.
+
+### 🔬 Document Analysis (OCR)
+![OCR](docs/screenshots/ocr.png)
+> Upload a prescription image or PDF medical report. Tesseract OCR extracts raw text; the AI engine interprets results, flags abnormal values, and summarizes findings in plain language.
+
+---
+
 ## 📌 Project Overview
 
 MediBot AI is a fully-featured Generative AI Healthcare Assistant that combines:
@@ -103,16 +127,17 @@ medibot-ai/
 │       ├── css/main.css        # Production CSS
 │       └── js/app.js           # Frontend application JS
 ├── data/
-│   ├── vectorstore/            # FAISS index (auto-generated)
+│   ├── vectorstore/            # FAISS index (auto-generated, not committed)
 │   └── medical_docs/           # Optional custom docs
 ├── docs/
+│   ├── screenshots/            # UI screenshots
 │   └── API.md                  # API reference
 ├── tests/
-├── .env.example                # Environment template
-├── requirements.txt            # Python dependencies
-├── Dockerfile                  # Container build
-├── docker-compose.yml          # Full stack compose
-└── render.yaml                 # Render.com deployment
+├── .env.example                # Environment template — copy to .env
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+└── render.yaml
 ```
 
 ---
@@ -143,15 +168,10 @@ GEMINI_API_KEY=your_key_here   # Free at aistudio.google.com
 
 ### 3. Run
 ```bash
-# From project root
 uvicorn backend.main:app --reload --port 8000
-
-# OR
-cd backend && python main.py
 ```
 
-Open **http://localhost:8000** in your browser.
-
+Open **http://localhost:8000** in your browser.  
 API docs: **http://localhost:8000/api/docs**
 
 ---
@@ -159,14 +179,10 @@ API docs: **http://localhost:8000/api/docs**
 ## 🐳 Docker Deployment
 
 ```bash
-# Copy and configure environment
 cp .env.example .env
 # Edit .env with your API keys
 
-# Start all services (app + MongoDB)
 docker-compose up -d
-
-# View logs
 docker-compose logs -f medibot
 ```
 
@@ -263,6 +279,15 @@ Full interactive docs: `http://localhost:8000/api/docs`
 | **OCR** | Tesseract, pypdf, Pillow |
 | **Frontend** | Vanilla JS, CSS3, Web Speech API |
 | **Deployment** | Docker, Docker Compose, Render |
+
+---
+
+## 🚧 Roadmap
+
+- [ ] Voice output (Text-to-Speech)
+- [ ] Export chat history as PDF
+- [ ] Multi-language support
+- [ ] Mobile app (React Native)
 
 ---
 
